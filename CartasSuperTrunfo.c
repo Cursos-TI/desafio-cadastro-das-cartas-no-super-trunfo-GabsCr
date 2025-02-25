@@ -4,17 +4,18 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
 
 int main() {
-    char estado1, estado2; //Definição das variáveis para cada estado sendo somente um caractere
-	char codigo1[15], codigo2[15]; //Definição das variáveis para cada código sendo uma string capaz de comportar até 15 caracteres ao invés de 2 porque foi a maneira que arranjei para corrigir um erro quando tentava juntar, no printf das cartas, o caractere único do estado com os números que os caracteres de código forneciam
-    char nome_da_cidade1[50], nome_da_cidade2[50]; //Definição das variáveis para cada cidade sendo uma string capaz de comportar até 50 caracteres
-	unsigned long int populacao1, populacao2; //Definição das variáveis para a população de cada cidade sendo um número inteiro
-    int numero_de_pontos_turisticos1, numero_de_pontos_turisticos2; //Definição das variáveis para os pontos turísticos de cada cidade sendo um número inteiro
-	float area1, area2; //Definição das variáveis com a área de cada cidade sendo um número de ponto flutuante
-    float pib1, pib2; //Definição das variáveis com o pib de cada cidade sendo um número de ponto flutuante
+    char estado1 = 'A', estado2 = 'B'; //Definição das variáveis para cada estado sendo somente um caractere
+	char codigo1[15] = "01", codigo2[15] = "02"; //Definição das variáveis para cada código sendo uma string capaz de comportar até 15 caracteres ao invés de 2 porque foi a maneira que arranjei para corrigir um erro quando tentava juntar, no printf das cartas, o caractere único do estado com os números que os caracteres de código forneciam
+    char nome_da_cidade1[50] = "São Paulo", nome_da_cidade2[50] = "Rio de Janeiro"; //Definição das variáveis para cada cidade sendo uma string capaz de comportar até 50 caracteres
+	unsigned long int populacao1 = 12325000, populacao2 = 6748000; //Definição das variáveis para a população de cada cidade sendo um número inteiro
+    int numero_de_pontos_turisticos1 = 50, numero_de_pontos_turisticos2 = 30; //Definição das variáveis para os pontos turísticos de cada cidade sendo um número inteiro
+	float area1 = 1521.11, area2 = 1200.25; //Definição das variáveis com a área de cada cidade sendo um número de ponto flutuante
+    float pib1 = 699.28, pib2 = 300.50; //Definição das variáveis com o pib de cada cidade sendo um número de ponto flutuante
 	float densidade_populacional1, densidade_populacional2;
 	float pib_per_capita1, pib_per_capita2;
 	float super_poder1, super_poder2;
 	
+	/*
     //Sequência pedindo cada uma das informações da primeira carta
 	printf("Digite o primeiro Estado (utilizando um caractere de A a H): ");
 	scanf(" %c", &estado1);
@@ -45,7 +46,7 @@ int main() {
 	printf("Digite o PIB da segunda cidade: ");
 	scanf("%f", &pib2);
 	printf("Digite a quantidade de pontos turisticos da segunda cidade: ");
-	scanf("%d", &numero_de_pontos_turisticos2);
+	scanf("%d", &numero_de_pontos_turisticos2);*/
 
 	//Calculo das densidades populacionais de cada cidade
 	densidade_populacional1 = populacao1 / area1;
@@ -58,14 +59,6 @@ int main() {
 	//Calculo do Super Poder de cada cartas
 	super_poder1 = populacao1 + area1 + pib1 + numero_de_pontos_turisticos1 + pib_per_capita1 - densidade_populacional1;
 	super_poder2 = populacao2 + area2 + pib2 + numero_de_pontos_turisticos2 + pib_per_capita2 - densidade_populacional2;
-	
-	int comparacao_populacao = populacao1 > populacao2;
-	int comparacao_area = area1 > area2;
-	int comparacao_pib = pib1 > pib2;
-	int comparacao_pontos_turisticos = numero_de_pontos_turisticos1 > numero_de_pontos_turisticos2;
-	int comparacao_pib_per_capita = pib_per_capita1 > pib_per_capita2;
-	int comparacao_densidade_populacional = densidade_populacional1 < densidade_populacional2;
-	int comparacao_super_poder = super_poder1 > super_poder2;
 
     //Parte do código imprimindo as informações da primeira carta com espaçamento de linha entre cada uma das informações e um grande espaço para separar as informações da segunda carta
 	printf("\nCidade 1:\n");
@@ -92,13 +85,41 @@ int main() {
 	printf("PIB per Capita: %.2f reais\n\n", pib_per_capita2);
 
 	printf("Comparação das Cartas: \n");
-	printf("População: %d\n", comparacao_populacao);
-	printf("Área: %d\n", comparacao_area);
-	printf("PIB: %d\n", comparacao_pib);
-	printf("Pontos Turísticos: %d\n", comparacao_pontos_turisticos);
-	printf("Densidade Populacional: %d\n", comparacao_densidade_populacional);
-	printf("PIB per Capita: %d\n", comparacao_pib_per_capita);
-	printf("Super Poder: %d\n\n", comparacao_super_poder);
+	if(populacao1 > populacao2) {
+		printf("Populacao: Cidade 1 ganhou!\n");
+	} else {
+		printf("Populacao: Cidade 2 ganhou!\n");
+	}
+	if(area1 > area2) {
+		printf("Area: Cidade 1 ganhou!\n");
+	} else {
+		printf("Area: Cidade 2 ganhou!\n");
+	}
+	if(pib1 > pib2) {
+		printf("PIB: Cidade 1 ganhou!\n");
+	} else {
+		printf("PIB: Cidade 2 ganhou!\n");
+	}
+	if(numero_de_pontos_turisticos1 > numero_de_pontos_turisticos2) {
+		printf("Numero de Pontos Turisticos: Cidade 1 ganhou!\n");
+	} else {
+		printf("Numero de Pontos Turisticos: Cidade 2 ganhou!\n");
+	}
+	if(pib_per_capita1 > pib_per_capita2) {
+		printf("PIB per Capita: Cidade 1 ganhou!\n");
+	} else {
+		printf("PIB per Capita: Cidade 2 ganhou!\n");
+	}
+	if(densidade_populacional1 < densidade_populacional2) {
+		printf("Densidade Populacional: Cidade 1 ganhou!\n");
+	} else {
+		printf("Densidade Populacional: Cidade 2 ganhou!\n");
+	}
+	if(super_poder1 > super_poder2) {
+		printf("Super Poder: Cidade 1 ganhou!\n");
+	} else {
+		printf("Super Poder: Cidade 2 ganhou!\n");
+	}
 
     return 0;
 }
